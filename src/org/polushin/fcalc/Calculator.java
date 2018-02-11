@@ -1,7 +1,9 @@
 package org.polushin.fcalc;
 
-import java.io.*;
-import java.util.EmptyStackException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.logging.Logger;
 
 /**
@@ -53,6 +55,8 @@ public class Calculator {
 			} catch (IllegalStackException e) {
 				logger.warning("Illegal stack state: " + e.getMessage());
 				continue;
+			} catch (DefineNotFoundException e) {
+				logger.warning(e.getMessage());
 			}
 			logger.fine(split[0] + " executed successfully.");
 		}

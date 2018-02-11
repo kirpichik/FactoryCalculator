@@ -10,11 +10,11 @@ import java.util.regex.Pattern;
  */
 public class Define implements CalcOperation {
 
-	private static final Pattern NUMBER = Pattern.compile("[0-9]+");
+	private static final Pattern IDENTIFIER = Pattern.compile("[a-zA-Z][a-zA-Z0-9]*");
 
 	@Override
 	public void execute(CalcEnvironment environment, String[] args) {
-		if (args.length != 2)
+		if (args.length != 2 || args[0].isEmpty())
 			throw new IllegalArgumentException("Need arguments: <name> <value>");
 		double value;
 		try {
@@ -22,7 +22,7 @@ public class Define implements CalcOperation {
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("Invalid value type.", e);
 		}
-		if (NUMBER.matcher(args[0]).matches())
+		if (!IDENTIFIER.matcher(args[0]).matches())
 			throw new IllegalArgumentException("Invalid define type.");
 		environment.setDefine(args[0], value);
 		environment.print("Defined " + args[0] + " as " + args[1]);

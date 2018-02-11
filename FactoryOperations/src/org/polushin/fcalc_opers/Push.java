@@ -16,9 +16,9 @@ public class Push implements CalcOperation {
 		try {
 			value = Double.parseDouble(args[0]);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("Invalid argument type.", e);
+			value = environment.getDefinedValue(args[0]);
 		}
 		environment.push(value);
-		environment.print("Pushed " + args[0]);
+		environment.print("Pushed " + value);
 	}
 }

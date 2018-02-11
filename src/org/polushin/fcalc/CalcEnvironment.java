@@ -1,6 +1,9 @@
 package org.polushin.fcalc;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Среда-состояние калькулятора.
@@ -58,6 +61,13 @@ public class CalcEnvironment {
 	}
 
 	/**
+	 * Очищает стек.
+	 */
+	public void clearStack() {
+		stack.clear();
+	}
+
+	/**
 	 * Ищет define по его имени и получает его значение.
 	 *
 	 * @param name Имя define.
@@ -83,7 +93,20 @@ public class CalcEnvironment {
 	 * @param value Значение define.
 	 */
 	public void setDefine(String name, double value) {
+		if (name == null)
+			throw new IllegalArgumentException("Name cannot be null!");
 		defines.put(name, value);
+	}
+
+	/**
+	 * Удаляет define.
+	 *
+	 * @param name Имя define.
+	 */
+	public void undefValue(String name) {
+		if (name == null)
+			throw new IllegalArgumentException("Name cannot be null!");
+		defines.remove(name);
 	}
 
 	/**
