@@ -1,0 +1,16 @@
+DEFINE name 4
+PUSH name
+SQRT
+PRINT
+# This is comment
+POP
+PUSH name
+PUSH name
+*
+PRINT
+PUSH 16
++
+PRINT
+PUSH 2
+/
+PRINT

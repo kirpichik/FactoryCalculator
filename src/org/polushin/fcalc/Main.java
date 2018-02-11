@@ -1,14 +1,12 @@
 package org.polushin.fcalc;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
 	public static void main(String... args) throws IOException {
 		if (args.length < 1) {
-			Calculator.logger.severe("Need arguments: [-i] [input file] <operations set>...");
+			Calculator.logger.severe("Need arguments: [-i] [input file] <operations>");
 			return;
 		}
 
@@ -26,7 +24,7 @@ public class Main {
 					Calculator.logger.severe("Input file redefined.");
 					return;
 				}
-				input = new File(args[i++]);
+				input = new File(args[++i]);
 				if (!checkFile(input))
 					return;
 				continue;
