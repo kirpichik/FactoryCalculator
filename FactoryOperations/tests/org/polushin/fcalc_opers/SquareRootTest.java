@@ -37,10 +37,8 @@ class SquareRootTest {
 		final String[] args = new String[0];
 		assertThrows(IllegalStackException.class, () -> sqrt.execute(env, args));
 		env.push(-1);
-		sqrt.execute(env, args);
-		assertTrue(Double.isNaN(env.pop()) && env.isStackEmpty());
+		assertThrows(ArithmeticException.class, () -> sqrt.execute(env, args));
 		env.push(-5);
-		sqrt.execute(env, args);
-		assertTrue(Double.isNaN(env.pop()) && env.isStackEmpty());
+		assertThrows(ArithmeticException.class, () -> sqrt.execute(env, args));
 	}
 }

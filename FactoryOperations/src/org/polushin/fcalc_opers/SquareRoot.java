@@ -10,7 +10,12 @@ public class SquareRoot implements CalcOperation {
 
 	@Override
 	public void execute(CalcEnvironment environment, String[] args) {
-		environment.push(Math.sqrt(environment.pop()));
+		double value = environment.pop();
+		if (value < 0) {
+			environment.push(value);
+			throw new ArithmeticException("Square root from < 0 number.");
+		}
+		environment.push(Math.sqrt(value));
 		environment.print("Square root taken.");
 	}
 }

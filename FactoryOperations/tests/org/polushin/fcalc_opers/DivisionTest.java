@@ -41,11 +41,9 @@ class DivisionTest {
 		env.clearStack();
 		env.push(0);
 		env.push(0);
-		div.execute(env, args);
-		assertTrue(Double.isNaN(env.pop()) && env.isStackEmpty());
+		assertThrows(ArithmeticException.class, () -> div.execute(env, args));
 		env.push(2);
 		env.push(0);
-		div.execute(env, args);
-		assertTrue(Double.isInfinite(env.pop()) && env.isStackEmpty());
+		assertThrows(ArithmeticException.class, () -> div.execute(env, args));
 	}
 }

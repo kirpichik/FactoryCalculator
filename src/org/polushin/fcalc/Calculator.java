@@ -55,7 +55,7 @@ public class Calculator {
 			} catch (IllegalStackException e) {
 				logger.warning("Illegal stack state: " + e.getMessage());
 				continue;
-			} catch (DefineNotFoundException e) {
+			} catch (DefineNotFoundException | ArithmeticException e) {
 				logger.warning(e.getMessage());
 			}
 			logger.fine(split[0] + " executed successfully.");
